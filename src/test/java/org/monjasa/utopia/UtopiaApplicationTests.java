@@ -1,4 +1,4 @@
-package org.monjasaa.utopia;
+package org.monjasa.utopia;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

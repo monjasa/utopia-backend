@@ -1,0 +1,21 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/utopia
+    username: postgres
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: create
+  liquibase:
+    enabled: false
+  security:
+    user:
+      name: actuator
+      password: password
+    oauth2:
+      resourceserver:
+        jwt.jwk-set-uri: https://www.googleapis.com/service_accounts/v1/jwk/securetoken%40system.gserviceaccount.com
+app:
+  security:
+    cors:
+      allowed-origin: http://localhost:4200

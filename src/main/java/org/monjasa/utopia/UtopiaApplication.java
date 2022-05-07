@@ -1,4 +1,4 @@
-package org.monjasaa.utopia;
+package org.monjasa.utopia;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
