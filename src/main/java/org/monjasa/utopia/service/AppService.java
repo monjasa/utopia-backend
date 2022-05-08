@@ -1,7 +1,10 @@
 package org.monjasa.utopia.service;
 
+import org.monjasa.utopia.dto.AppDto;
+import org.monjasa.utopia.dto.request.AppRequest;
+
 public interface AppService {
 
-    void create();
+    AppDto create(AppRequest request);
 
 }

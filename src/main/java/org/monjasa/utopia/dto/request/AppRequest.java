@@ -1,11 +1,11 @@
-package org.monjasa.utopia.dto;
+package org.monjasa.utopia.dto.request;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class AppDto {
+public class AppRequest {
 
     private String value;
 
