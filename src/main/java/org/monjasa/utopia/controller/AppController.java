@@ -1,20 +1,22 @@
 package org.monjasa.utopia.controller;
 
-import org.monjasa.utopia.dto.AppDataDto;
+import lombok.RequiredArgsConstructor;
+import org.monjasa.utopia.service.AppService;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.security.Principal;
-
 @RestController
 @RequestMapping("/api/app")
+@RequiredArgsConstructor
 public class AppController {
 
-    @GetMapping(path = "/test")
-    @PreAuthorize("hasAuthority('READ')")
-    public AppDataDto test(Principal principal) {
-        return new AppDataDto(principal.getName());
+    private final AppService appService;
+
+    @PostMapping(path = "/test")
+    @PreAuthorize("hasAuthority('SCOPE_READ')")
+    public void test() {
+        appService.create();
     }
 }

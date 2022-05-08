@@ -9,9 +9,6 @@ spring:
   liquibase:
     enabled: false
   security:
-    user:
-      name: actuator
-      password: password
     oauth2:
       resourceserver:
         jwt.jwk-set-uri: https://www.googleapis.com/service_accounts/v1/jwk/securetoken%40system.gserviceaccount.com
@@ -19,3 +16,6 @@ app:
   security:
     cors:
       allowed-origin: http://localhost:4200
+logging:
+  level:
+    org.hibernate.SQL: trace
