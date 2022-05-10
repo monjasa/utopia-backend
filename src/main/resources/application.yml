@@ -11,7 +11,8 @@ spring:
   security:
     oauth2:
       resourceserver:
-        jwt.jwk-set-uri: https://www.googleapis.com/service_accounts/v1/jwk/securetoken%40system.gserviceaccount.com
+        jwt:
+          jwk-set-uri: https://www.googleapis.com/service_accounts/v1/jwk/securetoken%40system.gserviceaccount.com
 app:
   security:
     cors:
