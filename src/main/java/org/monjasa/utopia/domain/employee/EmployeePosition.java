@@ -1,7 +1,8 @@
-package org.monjasa.utopia.domain;
+package org.monjasa.utopia.domain.employee;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.monjasa.utopia.domain.permission.Authority;
 import org.monjasa.utopia.domain.base.PersistableEntity;
 
 import javax.persistence.Entity;

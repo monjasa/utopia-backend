@@ -1,6 +1,6 @@
 package org.monjasa.utopia.service;
 
-import org.monjasa.utopia.domain.Authority;
+import org.monjasa.utopia.domain.permission.Authority;
 
 import java.util.List;
 

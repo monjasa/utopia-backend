@@ -2,10 +2,10 @@ package org.monjasa.utopia.service.impl;
 
 import com.google.firebase.auth.UserRecord;
 import lombok.RequiredArgsConstructor;
-import org.monjasa.utopia.domain.Authority;
-import org.monjasa.utopia.domain.Employee;
-import org.monjasa.utopia.dto.request.EmployeeRequest;
-import org.monjasa.utopia.dto.request.UserRequest;
+import org.monjasa.utopia.domain.permission.Authority;
+import org.monjasa.utopia.domain.employee.Employee;
+import org.monjasa.utopia.dto.employee.request.EmployeeRequest;
+import org.monjasa.utopia.dto.permission.request.UserRequest;
 import org.monjasa.utopia.repository.EmployeeRepository;
 import org.monjasa.utopia.service.AuthorityService;
 import org.monjasa.utopia.service.EmployeeService;

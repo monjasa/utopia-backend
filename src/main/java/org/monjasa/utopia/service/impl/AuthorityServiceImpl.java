@@ -1,7 +1,7 @@
 package org.monjasa.utopia.service.impl;
 
 import lombok.RequiredArgsConstructor;
-import org.monjasa.utopia.domain.Authority;
+import org.monjasa.utopia.domain.permission.Authority;
 import org.monjasa.utopia.repository.AuthorityRepository;
 import org.monjasa.utopia.service.AuthorityService;
 import org.springframework.stereotype.Service;

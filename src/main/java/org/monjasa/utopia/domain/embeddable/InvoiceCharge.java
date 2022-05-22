@@ -4,14 +4,17 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Embeddable;
+import java.math.BigDecimal;
 
 @Getter
 @Setter
 @Embeddable
-public class Dimension {
+public class InvoiceCharge {
 
-    private Integer rows;
+    private BigDecimal subtotal;
 
-    private Integer columns;
+    private BigDecimal concessionRate;
+
+    private BigDecimal total;
 
 }

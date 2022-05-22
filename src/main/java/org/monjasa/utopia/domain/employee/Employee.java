@@ -1,4 +1,4 @@
-package org.monjasa.utopia.domain;
+package org.monjasa.utopia.domain.employee;
 
 import lombok.Getter;
 import lombok.Setter;

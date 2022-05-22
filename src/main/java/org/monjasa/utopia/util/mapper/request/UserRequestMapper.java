@@ -4,9 +4,9 @@ package org.monjasa.utopia.util.mapper.request;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
-import org.monjasa.utopia.domain.Authority;
-import org.monjasa.utopia.dto.request.EmployeeRequest;
-import org.monjasa.utopia.dto.request.UserRequest;
+import org.monjasa.utopia.domain.permission.Authority;
+import org.monjasa.utopia.dto.employee.request.EmployeeRequest;
+import org.monjasa.utopia.dto.permission.request.UserRequest;
 
 import java.util.List;
 

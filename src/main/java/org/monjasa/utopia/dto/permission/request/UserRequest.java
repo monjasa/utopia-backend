@@ -1,4 +1,4 @@
-package org.monjasa.utopia.dto.request;
+package org.monjasa.utopia.dto.permission.request;
 
 import lombok.Getter;
 import lombok.Setter;

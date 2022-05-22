@@ -4,7 +4,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.UserRecord;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
-import org.monjasa.utopia.dto.request.UserRequest;
+import org.monjasa.utopia.dto.permission.request.UserRequest;
 import org.monjasa.utopia.service.UserManagementService;
 import org.monjasa.utopia.util.mapper.request.UserRequestMapper;
 import org.springframework.stereotype.Service;

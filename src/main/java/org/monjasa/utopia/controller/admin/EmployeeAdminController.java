@@ -1,7 +1,7 @@
-package org.monjasa.utopia.controller;
+package org.monjasa.utopia.controller.admin;
 
 import lombok.RequiredArgsConstructor;
-import org.monjasa.utopia.dto.request.EmployeeRequest;
+import org.monjasa.utopia.dto.employee.request.EmployeeRequest;
 import org.monjasa.utopia.service.EmployeeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/admin/employee")
 @RequiredArgsConstructor
-public class EmployeeController {
+public class EmployeeAdminController {
 
     private final EmployeeService employeeService;
 

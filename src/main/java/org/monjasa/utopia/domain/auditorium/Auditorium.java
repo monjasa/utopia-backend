@@ -1,4 +1,4 @@
-package org.monjasa.utopia.domain;
+package org.monjasa.utopia.domain.auditorium;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -20,8 +20,16 @@ public class Auditorium extends AuditableEntity {
     @OneToMany(mappedBy = "auditorium", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     private List<AuditoriumPart> parts = new ArrayList<>();
 
+    @OneToMany(mappedBy = "auditorium", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+    private List<AuditoriumSeatPricingPolicy> seatPricingPolicies = new ArrayList<>();
+
     public void addAuditoriumPart(AuditoriumPart part) {
         this.parts.add(part);
         part.setAuditorium(this);
+    }
+
+    public void addAuditoriumSeatPricingPolicy(AuditoriumSeatPricingPolicy seatPricingPolicy) {
+        this.seatPricingPolicies.add(seatPricingPolicy);
+        seatPricingPolicy.setAuditorium(this);
     }
 }

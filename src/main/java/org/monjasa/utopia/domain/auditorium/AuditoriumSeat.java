@@ -1,4 +1,4 @@
-package org.monjasa.utopia.domain;
+package org.monjasa.utopia.domain.auditorium;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -14,12 +14,19 @@ import javax.persistence.ManyToOne;
 @Getter
 @Setter
 @Entity
-public class AuditoriumPartRowSeat extends PersistableEntity {
+public class AuditoriumSeat extends PersistableEntity {
+
+    private Integer rowPosition;
+
+    private Integer columnPosition;
 
     @Enumerated(EnumType.STRING)
     private SeatStatus status;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private AuditoriumPartRow row;
+    private AuditoriumPart part;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private AuditoriumSeatPricingPolicy pricingPolicy;
 
 }

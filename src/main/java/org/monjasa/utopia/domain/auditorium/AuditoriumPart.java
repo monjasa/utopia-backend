@@ -1,9 +1,9 @@
-package org.monjasa.utopia.domain;
+package org.monjasa.utopia.domain.auditorium;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.monjasa.utopia.domain.base.PersistableEntity;
-import org.monjasa.utopia.domain.embeddable.Dimension;
+import org.monjasa.utopia.domain.embeddable.AuditoriumPartDimension;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
@@ -21,17 +21,19 @@ public class AuditoriumPart extends PersistableEntity {
 
     private String name;
 
+    private Integer displayPosition;
+
     @Embedded
-    private Dimension dimension;
+    private AuditoriumPartDimension dimension;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Auditorium auditorium;
 
-    @OneToMany(mappedBy = "part", cascade = {CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
-    private List<AuditoriumPartRow> rows = new ArrayList<>();
+    @OneToMany(mappedBy = "part", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
+    private List<AuditoriumSeat> seats = new ArrayList<>();
 
-    public void addAuditoriumPartRow(AuditoriumPartRow row) {
-        this.rows.add(row);
-        row.setPart(this);
+    public void addAuditoriumSeat(AuditoriumSeat seat) {
+        this.seats.add(seat);
+        seat.setPart(this);
     }
 }

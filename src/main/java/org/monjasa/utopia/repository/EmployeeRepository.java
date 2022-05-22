@@ -1,6 +1,6 @@
 package org.monjasa.utopia.repository;
 
-import org.monjasa.utopia.domain.Employee;
+import org.monjasa.utopia.domain.employee.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

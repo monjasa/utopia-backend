@@ -1,4 +1,4 @@
-package org.monjasa.utopia.dto.request;
+package org.monjasa.utopia.dto.auditorium.request;
 
 import lombok.Getter;
 import lombok.Setter;

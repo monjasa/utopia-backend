@@ -1,6 +1,6 @@
 package org.monjasa.utopia.repository;
 
-import org.monjasa.utopia.domain.Authority;
+import org.monjasa.utopia.domain.permission.Authority;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
