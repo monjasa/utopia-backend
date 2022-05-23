@@ -14,4 +14,6 @@ public class AuditoriumSeatRequest {
 
     private SeatStatus status;
 
+    private Integer pricingPolicyDisplayPosition;
+
 }

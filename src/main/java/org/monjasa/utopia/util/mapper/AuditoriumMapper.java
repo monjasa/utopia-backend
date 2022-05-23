@@ -1,13 +1,37 @@
 package org.monjasa.utopia.util.mapper;
 
+import org.mapstruct.AfterMapping;
 import org.mapstruct.CollectionMappingStrategy;
+import org.mapstruct.Context;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingTarget;
 import org.monjasa.utopia.domain.auditorium.Auditorium;
+import org.monjasa.utopia.domain.auditorium.AuditoriumSeat;
+import org.monjasa.utopia.domain.auditorium.AuditoriumSeatPricingPolicy;
 import org.monjasa.utopia.dto.auditorium.request.AuditoriumRequest;
+import org.monjasa.utopia.dto.auditorium.request.AuditoriumSeatRequest;
+
+import java.util.Map;
 
 @Mapper(collectionMappingStrategy = CollectionMappingStrategy.ADDER_PREFERRED)
 public interface AuditoriumMapper {
 
-    Auditorium toEntity(AuditoriumRequest request);
+    @Mapping(target = "seatPricingPolicies", ignore = true)
+    Auditorium toEntity(AuditoriumRequest request, @Context Map<Integer, AuditoriumSeatPricingPolicy> seatPricingPolicies);
 
+    @AfterMapping
+    default void afterToEntity(
+            @MappingTarget AuditoriumSeat auditoriumSeat,
+            AuditoriumSeatRequest request,
+            @Context Map<Integer, AuditoriumSeatPricingPolicy> seatPricingPolicies) {
+        auditoriumSeat.setPricingPolicy(seatPricingPolicies.get(request.getPricingPolicyDisplayPosition()));
+    }
+
+    @AfterMapping
+    default void afterToEntity(
+            @MappingTarget Auditorium auditorium,
+            @Context Map<Integer, AuditoriumSeatPricingPolicy> seatPricingPolicies) {
+        seatPricingPolicies.values().forEach(auditorium::addAuditoriumSeatPricingPolicy);
+    }
 }

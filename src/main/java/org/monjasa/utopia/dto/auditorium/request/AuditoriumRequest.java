@@ -11,6 +11,8 @@ public class AuditoriumRequest {
 
     private String name;
 
+    private List<AuditoriumSeatPricingPolicyRequest> seatPricingPolicies;
+
     private List<AuditoriumPartRequest> parts;
 
 }

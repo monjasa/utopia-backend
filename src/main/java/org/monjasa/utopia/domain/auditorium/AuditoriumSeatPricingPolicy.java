@@ -16,6 +16,8 @@ public class AuditoriumSeatPricingPolicy extends PersistableEntity {
 
     private BigDecimal price;
 
+    private Integer displayPosition;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private Auditorium auditorium;
 
