@@ -8,7 +8,7 @@ import javax.persistence.MappedSuperclass;
 @Getter
 @Setter
 @MappedSuperclass
-public abstract class SoftDeletableEntity extends PersistableEntity {
+public abstract class SoftDeletableEntity extends AuditableEntity {
 
     private boolean deleted;
 

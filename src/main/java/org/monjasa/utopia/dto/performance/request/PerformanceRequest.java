@@ -15,6 +15,8 @@ public class PerformanceRequest {
 
     private Duration duration;
 
+    private PerformanceAttachmentsRequest attachments;
+
     private Long genreId;
 
 }

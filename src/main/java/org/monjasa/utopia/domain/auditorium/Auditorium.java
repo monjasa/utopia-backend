@@ -3,6 +3,7 @@ package org.monjasa.utopia.domain.auditorium;
 import lombok.Getter;
 import lombok.Setter;
 import org.monjasa.utopia.domain.base.AuditableEntity;
+import org.monjasa.utopia.domain.base.SoftDeletableEntity;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -13,7 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-public class Auditorium extends AuditableEntity {
+public class Auditorium extends SoftDeletableEntity {
 
     private String name;
 

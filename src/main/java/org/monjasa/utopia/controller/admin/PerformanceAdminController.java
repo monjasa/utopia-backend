@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.monjasa.utopia.dto.performance.request.PerformanceRequest;
 import org.monjasa.utopia.service.PerformanceService;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ public class PerformanceAdminController {
     private final PerformanceService performanceService;
 
     @PostMapping
+    @PreAuthorize("hasAuthority('SCOPE_WRITE_PERFORMANCE')")
     @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody PerformanceRequest request) {
         performanceService.create(request);

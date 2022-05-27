@@ -3,10 +3,11 @@ package org.monjasa.utopia.domain.performance;
 import lombok.Getter;
 import lombok.Setter;
 import org.monjasa.utopia.domain.base.SoftDeletableEntity;
+import org.monjasa.utopia.domain.embeddable.PerformanceAttachments;
 import org.monjasa.utopia.domain.event.Event;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
@@ -25,6 +26,9 @@ public class Performance extends SoftDeletableEntity {
     private String description;
 
     private Duration duration;
+
+    @Embedded
+    private PerformanceAttachments attachments;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private PerformanceGenre genre;
