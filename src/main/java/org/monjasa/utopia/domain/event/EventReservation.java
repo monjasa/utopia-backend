@@ -2,21 +2,22 @@ package org.monjasa.utopia.domain.event;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.monjasa.utopia.domain.base.AuditableEntity;
+import org.monjasa.utopia.domain.base.SoftDeletableEntity;
 import org.monjasa.utopia.domain.embeddable.EventVisitorDetails;
-import org.monjasa.utopia.domain.enums.EventReservationStatus;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
 @Entity
-public class EventReservation extends AuditableEntity {
-
-    @Enumerated(EnumType.STRING)
-    private EventReservationStatus status;
+public class EventReservation extends SoftDeletableEntity {
 
     @Embedded
     private EventVisitorDetails visitorDetails;

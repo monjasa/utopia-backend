@@ -34,7 +34,21 @@ public class AuditoriumServiceImpl implements AuditoriumService {
         auditoriumRepository.save(auditorium);
     }
 
-    private Map<Integer, AuditoriumSeatPricingPolicy> getSeatPricingPolicies(AuditoriumRequest request) {
+    @Override
+    public List<AuditoriumItemDto> getAllItems() {
+        List<Auditorium> auditoriums = auditoriumRepository.findAllByOrderByName();
+        return auditoriums.stream()
+                .map(auditoriumMapper::toItemDto)
+                .toList();
+    }
+
+    @Override
+    public AuditoriumReservationDto getReservationDtoById(Long id, Map<Long, EventSeatReservation> seatReservationsBySeatId) {
+        Auditorium auditorium = auditoriumRepository.findByIdFetchingSeatPricingPolicies(id).orElseThrow();
+        return auditoriumMapper.toReservationDto(auditorium, seatReservationsBySeatId);
+    }
+
+    private Map<Integer, AuditoriumSeatPricingPolicy> getSeatPricingPoliciesByDisplayPosition(AuditoriumRequest request) {
         return request.getSeatPricingPolicies().stream()
                 .map(auditoriumSeatPricingPolicyMapper::toEntity)
                 .collect(Collectors.toMap(AuditoriumSeatPricingPolicy::getDisplayPosition, Function.identity()));
