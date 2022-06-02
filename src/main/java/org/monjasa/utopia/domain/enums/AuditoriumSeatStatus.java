@@ -1,7 +1,6 @@
 package org.monjasa.utopia.domain.enums;
 
-public enum SeatStatus {
+public enum AuditoriumSeatStatus {
     AVAILABLE,
-    UNAVAILABLE,
-    EMPTY
+    UNAVAILABLE
 }

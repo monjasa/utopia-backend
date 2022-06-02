@@ -1,15 +1,19 @@
 package org.monjasa.utopia.controller.admin;
 
 import lombok.RequiredArgsConstructor;
+import org.monjasa.utopia.dto.auditorium.AuditoriumItemDto;
 import org.monjasa.utopia.dto.auditorium.request.AuditoriumRequest;
 import org.monjasa.utopia.service.AuditoriumService;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/admin/auditorium")
@@ -23,5 +27,11 @@ public class AuditoriumAdminController {
     @ResponseStatus(HttpStatus.CREATED)
     public void create(@RequestBody AuditoriumRequest request) {
         auditoriumService.create(request);
+    }
+
+    @GetMapping("/item/all")
+    @PreAuthorize("hasAuthority('SCOPE_WRITE_AUDITORIUM')")
+    public List<AuditoriumItemDto> getAllItems() {
+        return auditoriumService.getAllItems();
     }
 }

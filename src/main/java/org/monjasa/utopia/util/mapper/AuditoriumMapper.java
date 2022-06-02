@@ -9,6 +9,10 @@ import org.mapstruct.MappingTarget;
 import org.monjasa.utopia.domain.auditorium.Auditorium;
 import org.monjasa.utopia.domain.auditorium.AuditoriumSeat;
 import org.monjasa.utopia.domain.auditorium.AuditoriumSeatPricingPolicy;
+import org.monjasa.utopia.domain.event.EventSeatReservation;
+import org.monjasa.utopia.dto.auditorium.AuditoriumItemDto;
+import org.monjasa.utopia.dto.auditorium.AuditoriumReservationDto;
+import org.monjasa.utopia.dto.auditorium.AuditoriumSeatReservationDto;
 import org.monjasa.utopia.dto.auditorium.request.AuditoriumRequest;
 import org.monjasa.utopia.dto.auditorium.request.AuditoriumSeatRequest;
 
@@ -34,4 +38,19 @@ public interface AuditoriumMapper {
             @Context Map<Integer, AuditoriumSeatPricingPolicy> seatPricingPolicies) {
         seatPricingPolicies.values().forEach(auditorium::addAuditoriumSeatPricingPolicy);
     }
+
+    AuditoriumItemDto toItemDto(Auditorium auditorium);
+
+    AuditoriumReservationDto toReservationDto(Auditorium auditorium, @Context Map<Long, EventSeatReservation> seatReservationsBySeatId);
+
+    @AfterMapping
+    default void afterToReservationDto(
+            @MappingTarget AuditoriumSeatReservationDto auditoriumSeatReservationDto,
+            AuditoriumSeat auditoriumSeat,
+            @Context Map<Long, EventSeatReservation> seatReservationsBySeatId) {
+        auditoriumSeatReservationDto.setPricingPolicyDisplayPosition(auditoriumSeat.getPricingPolicy().getDisplayPosition());
+        boolean isReserved = seatReservationsBySeatId.containsKey(auditoriumSeatReservationDto.getId());
+        auditoriumSeatReservationDto.setReserved(isReserved);
+    }
+
 }

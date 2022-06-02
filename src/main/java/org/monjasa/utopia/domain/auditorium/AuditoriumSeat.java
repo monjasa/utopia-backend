@@ -3,7 +3,7 @@ package org.monjasa.utopia.domain.auditorium;
 import lombok.Getter;
 import lombok.Setter;
 import org.monjasa.utopia.domain.base.PersistableEntity;
-import org.monjasa.utopia.domain.enums.SeatStatus;
+import org.monjasa.utopia.domain.enums.AuditoriumSeatStatus;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -21,7 +21,7 @@ public class AuditoriumSeat extends PersistableEntity {
     private Integer columnPosition;
 
     @Enumerated(EnumType.STRING)
-    private SeatStatus status;
+    private AuditoriumSeatStatus status;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private AuditoriumPart part;

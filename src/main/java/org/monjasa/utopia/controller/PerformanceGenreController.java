@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/performance/genre")
+@RequestMapping("/api/public/performance/genre")
 @RequiredArgsConstructor
 public class PerformanceGenreController {
 

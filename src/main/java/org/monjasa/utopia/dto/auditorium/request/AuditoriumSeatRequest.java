@@ -2,7 +2,7 @@ package org.monjasa.utopia.dto.auditorium.request;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.monjasa.utopia.domain.enums.SeatStatus;
+import org.monjasa.utopia.domain.enums.AuditoriumSeatStatus;
 
 @Getter
 @Setter
@@ -12,7 +12,7 @@ public class AuditoriumSeatRequest {
 
     private Integer columnPosition;
 
-    private SeatStatus status;
+    private AuditoriumSeatStatus status;
 
     private Integer pricingPolicyDisplayPosition;
 
