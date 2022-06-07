@@ -3,6 +3,7 @@ package org.monjasa.utopia.util.mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.monjasa.utopia.domain.performance.Performance;
+import org.monjasa.utopia.dto.performance.PerformanceConciseDto;
 import org.monjasa.utopia.dto.performance.PerformanceDto;
 import org.monjasa.utopia.dto.performance.PerformanceItemDto;
 import org.monjasa.utopia.dto.performance.request.PerformanceRequest;
@@ -16,5 +17,7 @@ public interface PerformanceMapper {
     PerformanceDto toDto(Performance performance);
 
     PerformanceItemDto toItemDto(Performance performance);
+
+    PerformanceConciseDto toConciseDto(Performance performance);
 
 }

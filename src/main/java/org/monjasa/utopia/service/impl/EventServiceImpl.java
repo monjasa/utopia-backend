@@ -13,6 +13,10 @@ import org.monjasa.utopia.service.EventSeatReservationService;
 import org.monjasa.utopia.service.EventService;
 import org.monjasa.utopia.service.PerformanceService;
 import org.monjasa.utopia.util.mapper.EventMapper;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -55,10 +59,16 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public List<EventConciseDto> getAllConcise() {
-        List<Event> events = eventRepository.findAllByOrderByStartedAt();
+        List<Event> events = eventRepository.findAllFetchingPerformanceAndAuditorium();
         return events.stream()
                 .map(eventMapper::toConciseDto)
                 .toList();
+    }
+
+    @Override
+    public Slice<EventConciseDto> getAllConcise(Pageable pageable) {
+        Slice<Event> events = eventRepository.findAllFetchingPerformanceAndAuditorium(pageable);
+        return events.map(eventMapper::toConciseDto);
     }
 
     private Map<Long, EventSeatReservation> getSeatReservationsBySeatId(Event event) {

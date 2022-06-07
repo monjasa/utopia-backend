@@ -1,6 +1,8 @@
 package org.monjasa.utopia.service;
 
 import org.monjasa.utopia.domain.performance.Performance;
+import org.monjasa.utopia.dto.event.EventConciseDto;
+import org.monjasa.utopia.dto.performance.PerformanceConciseDto;
 import org.monjasa.utopia.dto.performance.PerformanceDto;
 import org.monjasa.utopia.dto.performance.PerformanceItemDto;
 import org.monjasa.utopia.dto.performance.request.PerformanceRequest;
@@ -16,5 +18,7 @@ public interface PerformanceService {
     PerformanceDto getDtoById(Long id);
 
     List<PerformanceItemDto> getAllItems();
+
+    List<PerformanceConciseDto> getAllConcise();
 
 }

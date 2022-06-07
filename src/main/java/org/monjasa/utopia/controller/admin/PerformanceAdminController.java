@@ -1,6 +1,7 @@
 package org.monjasa.utopia.controller.admin;
 
 import lombok.RequiredArgsConstructor;
+import org.monjasa.utopia.dto.performance.PerformanceConciseDto;
 import org.monjasa.utopia.dto.performance.PerformanceItemDto;
 import org.monjasa.utopia.dto.performance.request.PerformanceRequest;
 import org.monjasa.utopia.service.PerformanceService;
@@ -33,5 +34,11 @@ public class PerformanceAdminController {
     @PreAuthorize("hasAuthority('SCOPE_READ_PERFORMANCE')")
     public List<PerformanceItemDto> getAllItems() {
         return performanceService.getAllItems();
+    }
+
+    @GetMapping("/concise/all")
+    @PreAuthorize("hasAuthority('SCOPE_READ_PERFORMANCE')")
+    public List<PerformanceConciseDto> getAllConcise() {
+        return performanceService.getAllConcise();
     }
 }

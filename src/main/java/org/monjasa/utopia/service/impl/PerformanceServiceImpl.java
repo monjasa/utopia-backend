@@ -2,6 +2,7 @@ package org.monjasa.utopia.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.monjasa.utopia.domain.performance.Performance;
+import org.monjasa.utopia.dto.performance.PerformanceConciseDto;
 import org.monjasa.utopia.dto.performance.PerformanceDto;
 import org.monjasa.utopia.dto.performance.PerformanceItemDto;
 import org.monjasa.utopia.dto.performance.request.PerformanceRequest;
@@ -42,6 +43,14 @@ public class PerformanceServiceImpl implements PerformanceService {
         List<Performance> performances = performanceRepository.findAllByOrderByTitle();
         return performances.stream()
                 .map(performanceMapper::toItemDto)
+                .toList();
+    }
+
+    @Override
+    public List<PerformanceConciseDto> getAllConcise() {
+        List<Performance> performances = performanceRepository.findAllByOrderByTitle();
+        return performances.stream()
+                .map(performanceMapper::toConciseDto)
                 .toList();
     }
 }

@@ -20,7 +20,7 @@ server:
 app:
   security:
     cors:
-      allowed-origins: http://localhost:4200
+      allowed-origins: "*"
 logging:
   level:
     org.hibernate.SQL: debug
