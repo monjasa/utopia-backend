@@ -13,8 +13,6 @@ import org.monjasa.utopia.service.EventSeatReservationService;
 import org.monjasa.utopia.service.EventService;
 import org.monjasa.utopia.service.PerformanceService;
 import org.monjasa.utopia.util.mapper.EventMapper;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
@@ -48,7 +46,6 @@ public class EventServiceImpl implements EventService {
     @Override
     public EventDto getDtoById(Long id) {
         Event event = eventRepository.findById(id).orElseThrow();
-
         Map<Long, EventSeatReservation> seatReservationsBySeatId = getSeatReservationsBySeatId(event);
         return eventMapper.toDto(
                 event,
