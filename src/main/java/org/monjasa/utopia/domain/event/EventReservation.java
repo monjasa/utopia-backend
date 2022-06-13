@@ -19,6 +19,8 @@ import java.util.List;
 @Entity
 public class EventReservation extends SoftDeletableEntity {
 
+    private String uuid;
+
     @Embedded
     private EventVisitorDetails visitorDetails;
 
@@ -28,4 +30,8 @@ public class EventReservation extends SoftDeletableEntity {
     @OneToMany(mappedBy = "reservation", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     private List<EventSeatReservation> seatReservations = new ArrayList<>();
 
+    public void addEventSeatReservation(EventSeatReservation seatReservation) {
+        this.seatReservations.add(seatReservation);
+        seatReservation.setReservation(this);
+    }
 }

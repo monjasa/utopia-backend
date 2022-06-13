@@ -48,9 +48,8 @@ public interface AuditoriumMapper {
             @MappingTarget AuditoriumSeatReservationDto auditoriumSeatReservationDto,
             AuditoriumSeat auditoriumSeat,
             @Context Map<Long, EventSeatReservation> seatReservationsBySeatId) {
-        auditoriumSeatReservationDto.setPricingPolicyDisplayPosition(auditoriumSeat.getPricingPolicy().getDisplayPosition());
-        boolean isReserved = seatReservationsBySeatId.containsKey(auditoriumSeatReservationDto.getId());
-        auditoriumSeatReservationDto.setReserved(isReserved);
+        auditoriumSeatReservationDto.setPartName(auditoriumSeat.getPart().getName());
+        boolean reserved = seatReservationsBySeatId.containsKey(auditoriumSeatReservationDto.getId());
+        auditoriumSeatReservationDto.setReserved(reserved);
     }
-
 }

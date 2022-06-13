@@ -7,6 +7,7 @@ import org.monjasa.utopia.domain.embeddable.InvoiceCharge;
 import org.monjasa.utopia.domain.enums.InvoiceStatus;
 import org.monjasa.utopia.domain.event.EventReservation;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -14,7 +15,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import java.time.LocalDateTime;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,20 +28,24 @@ public class Invoice extends AuditableEntity {
 
     private String description;
 
-    private LocalDateTime issuedAt;
+    private Instant issuedAt;
 
-    private LocalDateTime settledAt;
-
-    @Embedded
-    private InvoiceCharge charge;
+    private Instant settledAt;
 
     @Enumerated(EnumType.STRING)
     private InvoiceStatus status;
 
+    @Embedded
+    private InvoiceCharge charge;
+
     @ManyToOne(fetch = FetchType.LAZY)
     private EventReservation eventReservation;
 
-    @OneToMany(mappedBy = "invoice", orphanRemoval = true)
+    @OneToMany(mappedBy = "invoice", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, orphanRemoval = true)
     private List<InvoicePayment> payments = new ArrayList<>();
 
+    public void addInvoicePayment(InvoicePayment payment) {
+        this.payments.add(payment);
+        payment.setInvoice(this);
+    }
 }

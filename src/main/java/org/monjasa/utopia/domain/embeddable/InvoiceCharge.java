@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.Embeddable;
 import java.math.BigDecimal;
+import java.util.Currency;
 
 @Getter
 @Setter
@@ -16,5 +17,7 @@ public class InvoiceCharge {
     private BigDecimal concessionRate;
 
     private BigDecimal total;
+
+    private Currency currency;
 
 }

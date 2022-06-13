@@ -19,10 +19,10 @@ server:
   port: 8080
 app:
   server:
-    base-url: https://62ca-176-104-191-2.ngrok.io
+    base-url: https://40fc-176-104-191-2.ngrok.io
   security:
     cors:
-      allowed-origins: "*"
+      allowed-origins: http://localhost:4200
   liqpay:
     public-key: ${APP_LIQPAY_PUBLIC_KEY}
     private-key: ${APP_LIQPAY_PRIVATE_KEY}
