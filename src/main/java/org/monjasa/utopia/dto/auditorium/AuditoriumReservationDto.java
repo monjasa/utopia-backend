@@ -15,7 +15,6 @@ public class AuditoriumReservationDto {
 
     private List<AuditoriumPartReservationDto> parts;
 
-
     private List<AuditoriumSeatPricingPolicyDto> seatPricingPolicies;
 
 }

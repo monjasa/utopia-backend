@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/callback/liqpay")
+@RequestMapping("/api/callback/payment")
 @RequiredArgsConstructor
 public class LiqPayCallbackController {
 

@@ -10,13 +10,15 @@ public class AuditoriumSeatReservationDto {
 
     private Long id;
 
+    private String partName;
+
     private Integer rowPosition;
 
     private Integer columnPosition;
 
     private AuditoriumSeatStatus status;
 
-    private Integer pricingPolicyDisplayPosition;
+    private AuditoriumSeatPricingPolicyDto pricingPolicy;
 
     private boolean reserved;
 

@@ -1,11 +1,11 @@
 package org.monjasa.utopia.service;
 
-import org.monjasa.utopia.dto.liqpay.LiqPayCheckoutDto;
+import org.monjasa.utopia.dto.liqpay.LiqPayPaymentCheckoutDto;
 
 public interface LiqPayService {
 
     void handleCallback(String data, String signature);
 
-    LiqPayCheckoutDto getCheckout(String invoiceUuid, String redirectUrl);
+    LiqPayPaymentCheckoutDto getCheckout(String eventReservationUuid, String redirectUrl);
 
 }

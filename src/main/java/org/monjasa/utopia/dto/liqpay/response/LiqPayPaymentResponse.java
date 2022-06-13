@@ -28,12 +28,9 @@ public class LiqPayPaymentResponse {
 
     private Currency currency;
 
-    private String senderCardMask2;
-
     private String senderCardBank;
 
-    @JsonDeserialize(converter = EpochMillisecondsToInstantConverter.class)
-    private Instant createDate;
+    private String senderCardMask2;
 
     @JsonDeserialize(converter = EpochMillisecondsToInstantConverter.class)
     private Instant endDate;

@@ -12,9 +12,8 @@
 
     <groupId>org.monjasaa</groupId>
     <artifactId>utopia</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.3</version>
     <name>utopia</name>
-    <description>utopia</description>
 
     <properties>
         <java.version>17</java.version>

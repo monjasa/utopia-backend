@@ -4,15 +4,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.monjasa.utopia.controller.callback.LiqPayCallbackController;
-import org.monjasa.utopia.dto.liqpay.LiqPayCheckoutDto;
+import org.monjasa.utopia.domain.invoice.Invoice;
+import org.monjasa.utopia.dto.liqpay.LiqPayPaymentCheckoutDto;
 import org.monjasa.utopia.dto.liqpay.request.LiqPayCheckoutRequest;
 import org.monjasa.utopia.dto.liqpay.response.LiqPayPaymentResponse;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.util.UriComponentsBuilder;
-
-import java.math.BigDecimal;
 
 @Component
 @RequiredArgsConstructor
@@ -36,23 +35,23 @@ public class LiqPayMapper {
     }
 
     @SneakyThrows
-    public byte[] toCheckoutRequestData(String invoiceUuid, String redirectUrl) {
+    public byte[] toCheckoutRequestData(Invoice invoice, String redirectUrl) {
         LiqPayCheckoutRequest checkoutRequest = LiqPayCheckoutRequest.builder()
                 .version(LIQPAY_API_VERSION)
-                .publicKey(publicKey)
                 .action(LIQPAY_PAY_ACTION)
-                .amount(BigDecimal.valueOf(120)) //from dto
-                .currency("UAH") //from dto?
-                .description("description") //from dto
-                .orderId(invoiceUuid) //from dto
+                .publicKey(publicKey)
+                .amount(invoice.getCharge().getTotal())
+                .currency(invoice.getCharge().getCurrency())
+                .description(invoice.getDescription())
+                .orderId(invoice.getNumber())
                 .resultUrl(redirectUrl)
                 .serverUrl(buildCallbackUrl())
                 .build();
         return objectMapper.writeValueAsBytes(checkoutRequest);
     }
 
-    public LiqPayCheckoutDto toCheckoutDto(String data, String signature) {
-        return LiqPayCheckoutDto.builder()
+    public LiqPayPaymentCheckoutDto toCheckoutDto(String data, String signature) {
+        return LiqPayPaymentCheckoutDto.builder()
                 .data(data)
                 .signature(signature)
                 .build();
