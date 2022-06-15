@@ -1,6 +1,6 @@
 package org.monjasa.utopia.service;
 
-import org.monjasa.utopia.dto.liqpay.LiqPayPaymentCheckoutDto;
+import org.monjasa.utopia.dto.payment.LiqPayPaymentCheckoutDto;
 
 public interface LiqPayService {
 

@@ -13,9 +13,9 @@ import org.monjasa.utopia.dto.event.EventDto;
 import org.monjasa.utopia.dto.event.request.EventRequest;
 import org.monjasa.utopia.dto.performance.PerformanceDto;
 
-import java.time.LocalDateTime;
+import java.time.Instant;
 
-@Mapper(uses = {PerformanceMapper.class, AuditoriumMapper.class})
+@Mapper(uses = {PerformanceMapper.class, AuditoriumMapper.class, LocalDateTimeMapper.class})
 public interface EventMapper {
 
     @Mapping(target = "performance.id", source = "performanceId")
@@ -24,7 +24,7 @@ public interface EventMapper {
 
     @AfterMapping
     default void afterToEntity(@MappingTarget Event event, @Context Performance performance) {
-        LocalDateTime endedAt = event.getStartedAt().plus(performance.getDuration());
+        Instant endedAt = event.getStartedAt().plus(performance.getDuration());
         event.setEndedAt(endedAt);
     }
 

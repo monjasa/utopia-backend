@@ -10,7 +10,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
-    <groupId>org.monjasaa</groupId>
+    <groupId>org.monjasa</groupId>
     <artifactId>utopia</artifactId>
     <version>0.1.3</version>
     <name>utopia</name>

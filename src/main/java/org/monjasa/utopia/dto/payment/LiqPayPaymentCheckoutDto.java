@@ -1,4 +1,4 @@
-package org.monjasa.utopia.dto.liqpay;
+package org.monjasa.utopia.dto.payment;
 
 import lombok.Builder;
 import lombok.Getter;

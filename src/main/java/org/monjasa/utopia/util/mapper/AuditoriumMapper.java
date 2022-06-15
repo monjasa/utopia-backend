@@ -12,13 +12,13 @@ import org.monjasa.utopia.domain.auditorium.AuditoriumSeatPricingPolicy;
 import org.monjasa.utopia.domain.event.EventSeatReservation;
 import org.monjasa.utopia.dto.auditorium.AuditoriumItemDto;
 import org.monjasa.utopia.dto.auditorium.AuditoriumReservationDto;
-import org.monjasa.utopia.dto.auditorium.AuditoriumSeatReservationDto;
 import org.monjasa.utopia.dto.auditorium.request.AuditoriumRequest;
 import org.monjasa.utopia.dto.auditorium.request.AuditoriumSeatRequest;
 
 import java.util.Map;
 
-@Mapper(collectionMappingStrategy = CollectionMappingStrategy.ADDER_PREFERRED)
+@Mapper(collectionMappingStrategy = CollectionMappingStrategy.ADDER_PREFERRED,
+        uses = AuditoriumSeatMapper.class)
 public interface AuditoriumMapper {
 
     @Mapping(target = "seatPricingPolicies", ignore = true)
@@ -43,13 +43,4 @@ public interface AuditoriumMapper {
 
     AuditoriumReservationDto toReservationDto(Auditorium auditorium, @Context Map<Long, EventSeatReservation> seatReservationsBySeatId);
 
-    @AfterMapping
-    default void afterToReservationDto(
-            @MappingTarget AuditoriumSeatReservationDto auditoriumSeatReservationDto,
-            AuditoriumSeat auditoriumSeat,
-            @Context Map<Long, EventSeatReservation> seatReservationsBySeatId) {
-        auditoriumSeatReservationDto.setPartName(auditoriumSeat.getPart().getName());
-        boolean reserved = seatReservationsBySeatId.containsKey(auditoriumSeatReservationDto.getId());
-        auditoriumSeatReservationDto.setReserved(reserved);
-    }
 }

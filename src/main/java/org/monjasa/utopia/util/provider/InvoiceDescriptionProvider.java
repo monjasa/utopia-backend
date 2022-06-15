@@ -14,6 +14,8 @@ public class InvoiceDescriptionProvider {
 
     private final LocaleProvider localeProvider;
 
+    private final TimeZoneProvider timeZoneProvider;
+
     public String provideDescriptionByEventReservation(EventReservation eventReservation) {
         Event event = eventReservation.getEvent();
         return String.format(
@@ -27,6 +29,7 @@ public class InvoiceDescriptionProvider {
     private DateTimeFormatter getDateTimeFormatter() {
         return DateTimeFormatter
                 .ofLocalizedDateTime(FormatStyle.MEDIUM)
+                .withZone(timeZoneProvider.getDefaultTimeZone())
                 .withLocale(localeProvider.getDefaultLocale());
     }
 }

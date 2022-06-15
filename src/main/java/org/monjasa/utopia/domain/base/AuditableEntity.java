@@ -10,7 +10,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @Getter
 @Setter
@@ -22,12 +22,12 @@ public abstract class AuditableEntity extends PersistableEntity {
     protected String createdBy;
 
     @CreatedDate
-    protected LocalDateTime createdAt;
+    protected Instant createdAt;
 
     @LastModifiedBy
     protected String lastModifiedBy;
 
     @LastModifiedDate
-    protected LocalDateTime lastModifiedAt;
+    protected Instant lastModifiedAt;
 
 }

@@ -1,4 +1,4 @@
-package org.monjasa.utopia.dto.liqpay.response;
+package org.monjasa.utopia.dto.payment.response;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;

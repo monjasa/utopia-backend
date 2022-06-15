@@ -3,7 +3,7 @@ package org.monjasa.utopia.util.mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.monjasa.utopia.domain.invoice.InvoicePayment;
-import org.monjasa.utopia.dto.liqpay.response.LiqPayPaymentResponse;
+import org.monjasa.utopia.dto.payment.response.LiqPayPaymentResponse;
 
 @Mapper
 public interface InvoicePaymentMapper {

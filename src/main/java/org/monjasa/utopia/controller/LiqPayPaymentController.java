@@ -1,7 +1,7 @@
 package org.monjasa.utopia.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.monjasa.utopia.dto.liqpay.LiqPayPaymentCheckoutDto;
+import org.monjasa.utopia.dto.payment.LiqPayPaymentCheckoutDto;
 import org.monjasa.utopia.service.LiqPayService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

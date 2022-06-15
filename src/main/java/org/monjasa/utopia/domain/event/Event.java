@@ -9,16 +9,16 @@ import org.monjasa.utopia.domain.performance.Performance;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
-import java.time.LocalDateTime;
+import java.time.Instant;
 
 @Getter
 @Setter
 @Entity
 public class Event extends AuditableEntity {
 
-    private LocalDateTime startedAt;
+    private Instant startedAt;
 
-    private LocalDateTime endedAt;
+    private Instant endedAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private Performance performance;

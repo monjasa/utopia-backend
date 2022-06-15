@@ -26,6 +26,10 @@ app:
   liqpay:
     public-key: ${APP_LIQPAY_PUBLIC_KEY}
     private-key: ${APP_LIQPAY_PRIVATE_KEY}
+  locale:
+    language-tag: uk-UA
+  time-zone:
+    time-zone-id: Europe/Kiev
 logging:
   level:
     org.hibernate.SQL: debug

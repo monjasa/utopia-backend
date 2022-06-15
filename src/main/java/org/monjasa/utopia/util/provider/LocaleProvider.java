@@ -1,5 +1,6 @@
 package org.monjasa.utopia.util.provider;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.Locale;
@@ -7,11 +8,10 @@ import java.util.Locale;
 @Component
 public class LocaleProvider {
 
-    public Locale getDefaultLocale() {
-        return getUkrainianLocale();
-    }
+    @Value("${app.locale.language-tag}")
+    private String languageTag;
 
-    public Locale getUkrainianLocale() {
-        return new Locale("uk", "UA");
+    public Locale getDefaultLocale() {
+        return Locale.forLanguageTag(languageTag);
     }
 }
