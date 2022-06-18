@@ -1,7 +1,6 @@
 package org.monjasa.utopia.service.impl;
 
 import lombok.RequiredArgsConstructor;
-import org.monjasa.utopia.domain.auditorium.AuditoriumSeat;
 import org.monjasa.utopia.domain.enums.InvoiceStatus;
 import org.monjasa.utopia.domain.event.EventReservation;
 import org.monjasa.utopia.domain.invoice.Invoice;
@@ -12,7 +11,6 @@ import org.monjasa.utopia.util.builder.InvoiceBuilder;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -23,8 +21,8 @@ public class InvoiceServiceImpl implements InvoiceService {
     private final InvoiceBuilder invoiceBuilder;
 
     @Override
-    public void createByEventReservation(EventReservation eventReservation, List<AuditoriumSeat> auditoriumSeats) {
-        Invoice invoice = invoiceBuilder.buildByEventReservation(eventReservation, auditoriumSeats);
+    public void createByEventReservation(EventReservation eventReservation) {
+        Invoice invoice = invoiceBuilder.buildByEventReservation(eventReservation);
         invoiceRepository.save(invoice);
     }
 
