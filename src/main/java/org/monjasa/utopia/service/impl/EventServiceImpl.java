@@ -17,6 +17,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
@@ -64,7 +65,7 @@ public class EventServiceImpl implements EventService {
 
     @Override
     public Slice<EventConciseDto> getAllConcise(Pageable pageable) {
-        Slice<Event> events = eventRepository.findAllFetchingPerformanceAndAuditorium(pageable);
+        Slice<Event> events = eventRepository.findAllFetchingPerformanceAndAuditorium(pageable, Instant.now());
         return events.map(eventMapper::toConciseDto);
     }
 

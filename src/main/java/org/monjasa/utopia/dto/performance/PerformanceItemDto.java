@@ -14,4 +14,6 @@ public class PerformanceItemDto {
 
     private PerformanceAttachments attachments;
 
+    private PerformanceGenreDto genre;
+
 }

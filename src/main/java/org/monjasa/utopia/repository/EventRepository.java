@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.Instant;
 import java.util.List;
 
 @Repository
@@ -21,7 +22,8 @@ public interface EventRepository extends PagingAndSortingRepository<Event, Long>
     @Query("select event from Event event " +
             "join fetch event.performance performance " +
             "join fetch event.auditorium auditorium " +
+            "where event.startedAt > :startedAt " +
             "order by event.startedAt")
-    Slice<Event> findAllFetchingPerformanceAndAuditorium(Pageable pageable);
+    Slice<Event> findAllFetchingPerformanceAndAuditorium(Pageable pageable, Instant startedAt);
 
 }

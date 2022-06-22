@@ -2,8 +2,9 @@ package org.monjasa.utopia.service.impl;
 
 import com.google.firebase.auth.UserRecord;
 import lombok.RequiredArgsConstructor;
-import org.monjasa.utopia.domain.permission.Authority;
 import org.monjasa.utopia.domain.employee.Employee;
+import org.monjasa.utopia.domain.permission.Authority;
+import org.monjasa.utopia.dto.employee.EmployeeConciseDto;
 import org.monjasa.utopia.dto.employee.request.EmployeeRequest;
 import org.monjasa.utopia.dto.permission.request.UserRequest;
 import org.monjasa.utopia.repository.EmployeeRepository;
@@ -36,6 +37,14 @@ public class EmployeeServiceImpl implements EmployeeService {
         Employee employee = employeeMapper.toEntity(request);
         employee.setUid(userRecord.getUid());
         employeeRepository.save(employee);
+    }
+
+    @Override
+    public List<EmployeeConciseDto> getAllConcise() {
+        List<Employee> employees = employeeRepository.findAll();
+        return employees.stream()
+                .map(employeeMapper::toConciseDto)
+                .toList();
     }
 
     private UserRecord createUserRecord(EmployeeRequest request) {
